@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
+@RequestMapping("/routes")
 public class RoutesController {
 
     private RoutesDao routesDao;
@@ -33,7 +34,7 @@ public class RoutesController {
 
     //Get My Routes --- Will return routes linked to logged in DRIVER account
     //--- filtering by Date, thinking this could be done w/ a filter function on the front end
-    @RequestMapping(path="/routes/myRoutes", method= RequestMethod.GET)
+    @RequestMapping(path="/myRoutes", method= RequestMethod.GET)
     public List<Routes> getMyRoutes(Principal principal) {
 
         DriverDetails loggedInDriver = driverDetailsDao.getDriverByUsername(principal.getName());
@@ -49,7 +50,7 @@ public class RoutesController {
     }
 
     //Get all routes from the routes table
-    @RequestMapping(path="/routes", method= RequestMethod.GET)
+    @RequestMapping(method= RequestMethod.GET)
     public List<Routes> getAllRoutes() {
         List<Routes> allRoutes = routesDao.getAllRoutes();
         if (allRoutes.size() == 0) {
@@ -59,7 +60,7 @@ public class RoutesController {
     }
 
     //Get a Route object from the routes table, by route_id
-    @RequestMapping(path="/routes/{routeId}", method= RequestMethod.GET)
+    @RequestMapping(path="/{routeId}", method= RequestMethod.GET)
     public Routes getRouteByRouteId(@PathVariable int routeId) {
         Routes route = null;
         route = routesDao.getRoutesByRouteId(routeId);
@@ -71,7 +72,7 @@ public class RoutesController {
     }
 
     //Get a List of Route objects from the routes table, grouped by driver_id
-    @RequestMapping(path="/routes/drivers/{driver_Id}", method= RequestMethod.GET)
+    @RequestMapping(path="/drivers/{driver_Id}", method= RequestMethod.GET)
     public List<Routes> getRoutesByDriverId(@PathVariable int driver_Id) {
 
         if (driverDetailsDao.getDriverByDriverId(driver_Id) == null) {
@@ -91,7 +92,7 @@ public class RoutesController {
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path="/routes", method= RequestMethod.POST)
+    @RequestMapping(method= RequestMethod.POST)
     public Routes addNewRoute(@Valid @RequestBody Routes newRoute) {
         if (newRoute.getRouteDate() != null) {
             return routesDao.createRoute(newRoute);
@@ -104,7 +105,7 @@ public class RoutesController {
     //Utilize to Assign a driver to a route
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(path="/routes/{routeId}", method= RequestMethod.PUT)
+    @RequestMapping(path="/{routeId}", method= RequestMethod.PUT)
     public Routes updateRoute(@Valid @RequestBody Routes routeToUpdate, @PathVariable int routeId) {
         if (routeToUpdate.getRouteId() != routeId) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The Route ID provided does not match the Route record you're attempting to update");
@@ -123,7 +124,7 @@ public class RoutesController {
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/routes/{routeId}", method= RequestMethod.DELETE)
+    @RequestMapping(path="/{routeId}", method= RequestMethod.DELETE)
     public void deleteRoute(@PathVariable int routeId) {
         if (routesDao.getRoutesByRouteId(routeId) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The Route record you're attempting to delete, does not exist");

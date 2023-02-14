@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
+@RequestMapping("/driverDetails")
 public class DriverController {
 
     private DriverDetailsDao driverDetailsDao;
@@ -31,13 +32,13 @@ public class DriverController {
 
 
     //Get all driver details objects from the driver_details table
-    @RequestMapping(path="/driverDetails", method= RequestMethod.GET)
+    @RequestMapping(path="", method= RequestMethod.GET)
     public List<DriverDetails> getAllDrivers() {
         return driverDetailsDao.getAllDrivers();
     }
 
     //Get a driver detail object from the driver_details table, using driver_id
-    @RequestMapping(path="/driverDetails/{driver_id}", method= RequestMethod.GET)
+    @RequestMapping(path="/{driver_id}", method= RequestMethod.GET)
     public DriverDetails getDriverByEmployeeId(@PathVariable int driver_id) {
         DriverDetails driver = null;
         driver = driverDetailsDao.getDriverByDriverId(driver_id);
@@ -53,7 +54,7 @@ public class DriverController {
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/driverDetails/{driver_id}", method= RequestMethod.DELETE)
+    @RequestMapping(path="/{driver_id}", method= RequestMethod.DELETE)
     public void deleteDriverDetail(@PathVariable int driver_id) {
         if (driverDetailsDao.getDriverByDriverId(driver_id) != null) {
             driverDetailsDao.deleteDriver(driver_id);
@@ -67,7 +68,7 @@ public class DriverController {
     // Update 2/5 - Shouldn't need this handler method, /addDriver endpoint in Authentication Controller implements this already upon driver registration
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path="/driverDetails", method= RequestMethod.POST)
+    @RequestMapping(method= RequestMethod.POST)
     public DriverDetails addDriverDetail(@RequestBody DriverDetails newDriver) {
         if (newDriver.getUsername() == null || newDriver.getHome_office_address() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not enough details provided in the request!");
@@ -81,7 +82,7 @@ public class DriverController {
     //Update a row in the driver_details table - returns the updated Driver Detail object
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(path="/driverDetails/{driver_id}", method= RequestMethod.PUT)
+    @RequestMapping(path="/{driver_id}", method= RequestMethod.PUT)
     public DriverDetails updateDriverDetail(@RequestBody DriverDetails driverToUpdate, @PathVariable int driver_id) {
         if (driverToUpdate.getDriver_id() != driver_id) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The Driver ID provided does not match the record you're attempting to update");

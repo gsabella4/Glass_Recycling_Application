@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
+@RequestMapping("/prizes")
 public class PrizeController {
 
     private PrizeDetailsDao prizeDetailsDao;
@@ -29,13 +30,13 @@ public class PrizeController {
 
 
     //Get all prizes
-    @RequestMapping(path="/prizes", method= RequestMethod.GET)
+    @RequestMapping(method= RequestMethod.GET)
     public List<PrizeDetails> getAllPrizes() {
         return prizeDetailsDao.getPrizeList();
     }
 
     //Get prize by prize_id
-    @RequestMapping(path="/prizes/{prizeId}", method= RequestMethod.GET)
+    @RequestMapping(path="/{prizeId}", method= RequestMethod.GET)
     public PrizeDetails getPrizeByPrizeId(@PathVariable int prizeId) {
         PrizeDetails prize = prizeDetailsDao.getPrizeByPrizeId(prizeId);
         if (prize != null) {
@@ -46,13 +47,13 @@ public class PrizeController {
     }
 
     //Add new prize
-    @RequestMapping(path="/prizes", method= RequestMethod.POST)
+    @RequestMapping(method= RequestMethod.POST)
     public PrizeDetails addPrize(@Valid @RequestBody PrizeDetails newPrize) {
             return prizeDetailsDao.addPrize(newPrize);
     }
 
     //Edit a prize
-    @RequestMapping(path="/prizes/{prizeId}", method= RequestMethod.PUT)
+    @RequestMapping(path="/{prizeId}", method= RequestMethod.PUT)
     public PrizeDetails updatePrize(@Valid @RequestBody PrizeDetails updatedPrize, @PathVariable int prizeId) {
         if (updatedPrize.getPrize_id() != prizeId) {
             prizeDetailsDao.updatePrize(updatedPrize);
@@ -63,7 +64,7 @@ public class PrizeController {
     }
 
     //Delete a prize
-    @RequestMapping(path="/prizes/{prizeId}", method= RequestMethod.DELETE)
+    @RequestMapping(path="/{prizeId}", method= RequestMethod.DELETE)
     public void deletePrize(@PathVariable int prizeId) {
         prizeDetailsDao.deletePrize(prizeId);
     }
