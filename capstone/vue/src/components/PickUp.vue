@@ -6,7 +6,7 @@
           <h3>Schedule Pick Up</h3>
 
           <fieldset>
-            <label for="name">Name:</label>
+            <label for="name">Username:</label>
             <input
               type="text"
               id="name"
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       pickup: {
-        requesting_username: "",
+        requesting_username: this.$store.state.user.username,
         pickup_date: "",
         num_of_bins: "",
         is_picked_up: false,

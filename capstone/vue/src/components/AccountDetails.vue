@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <form v-on:submit.prevent="saveAccountDetails" class="account-form">
+    <form v-on:submit="saveAccountDetails" class="account-form">
       <div class="form-header">
         <h1>My Account</h1>
       </div>
@@ -44,7 +44,7 @@
           <input
             type="text"
             name="name"
-            placeholder="State"
+            placeholder="State Abbreviation"
             v-model="userDetails.state_abbreviation"
           />
           <input
@@ -58,7 +58,7 @@
       <!-- Submit button -->
       <div class="btn-block">
         <button type="submit">Save</button>
-        <button type="button" v-on:click="cancel()">Cancel</button>
+        <button type="button" v-on:click="cancel">Cancel</button>
       </div>
     </form>
   </div>
@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       userDetails: {
-        username: "",
+        username: this.$store.state.user.username,
         full_name: "",
         street_address: "",
         city: "",

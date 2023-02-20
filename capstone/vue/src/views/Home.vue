@@ -133,6 +133,7 @@ export default {
     };
   },
   created() {
+    this.$router.push('/');
     AccountService.getTotalGlassRecycled().then((response) => {
       this.totalGlass = response.data;
     });
