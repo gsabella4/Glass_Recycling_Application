@@ -310,9 +310,6 @@ button:active {
   filter: brightness(0.8);
 }
 
-.dropdown {
-}
-
 .toggle {
   display: none;
 }
