@@ -58,7 +58,7 @@
       <!-- Submit button -->
       <div class="btn-block">
         <button type="submit">Save</button>
-        <button type="button" v-on:click="cancel">Cancel</button>
+        <button type="button" v-on:click="cancel()">Cancel</button>
       </div>
     </form>
   </div>
@@ -103,6 +103,7 @@ export default {
     },
     cancel() {
       this.$router.push("/account");
+      this.$router.go(0);
     },
   },
 };
