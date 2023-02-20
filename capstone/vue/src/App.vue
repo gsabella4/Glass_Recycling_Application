@@ -35,7 +35,8 @@
 
     
         <div class="dropdown-content">
-          <router-link id="login" v-bind:to="{ name: 'login' }">
+          <router-link id="login" v-bind:to="{ name: 'login' }"
+          v-if="$store.state.token == ''">
             Login</router-link
           >
           <router-link
@@ -43,8 +44,7 @@
             v-bind:to="{ name: 'logout' }"
             v-if="$store.state.token != ''"
             >Logout</router-link
-          >
-          <!-- for some reason, with the v-if 'logout' doesn't show on dropdown -->
+            >
         </div>
       </div>
     </nav>

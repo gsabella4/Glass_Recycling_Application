@@ -55,7 +55,7 @@ export default {
     };
   },
 
-  //this created method update the user after we calling the method. then we can retrive the information that w want to here
+  //this created method update the user after we calling the method. then we can retrieve the information that w want to here
   created() {
     // after saving account details, the form should be the same.
     // get address
