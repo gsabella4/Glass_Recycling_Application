@@ -13,7 +13,7 @@ public interface PickupDetailsDao {
 
     List<PickupDetails> getUnassignedPickupsByUsername(String username);
 
-    List<PickupDetails> getAllOutstandingPickups();
+    List<PickupDetails> getAllPendingPickups();
 
     List<PickupDetails> getOutstandingPickupsByUsername(String username);
 

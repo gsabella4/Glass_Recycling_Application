@@ -13,6 +13,10 @@ export default {
     getPickups() {
         return axios.get('/pickups');
     },
+    
+    getUnassignedPickups() {
+        return axios.get('/pickups/unassigned');
+    },
 
     getPickupByDriverId(driverId) {
         return axios.get(`/pickups/${driverId}`);

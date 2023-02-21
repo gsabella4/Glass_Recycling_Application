@@ -52,37 +52,41 @@ VALUES ('lglassmore','3001 Railroad St, Pittsburgh, PA 15201'),
        ('mglassmore','3001 Railroad St, Pittsburgh, PA 15201'),
        ('cglassmore','3001 Railroad St, Pittsburgh, PA 15201');
 
+-- Pickup History for mraymond
+INSERT INTO routes (route_date)
+VALUES ('2022-12-15'),
+       ('2022-12-31'),
+       ('2023-01-15'),
+       ('2023-01-31');
+INSERT INTO pickup_details (route_id, requesting_username, pickup_date, pickup_weight, num_of_bins, is_picked_up)
+VALUES (1, 'mraymond', '2022-12-15', 120, 2, true),
+       (2, 'mraymond', '2022-12-31', 60, 1, true),
+       (3, 'mraymond', '2023-01-15', 60, 1, true),
+       (4, 'mraymond', '2023-01-31', 180, 3, true);
+
 -- Routes
 INSERT INTO routes (route_date)
- VALUES ('2023-02-21'),
-        ('2023-02-21'),
-        ('2023-02-22'),
-        ('2023-02-23');
+ VALUES ('2023-02-25'),
+        ('2023-02-25'),
+        ('2023-02-26'),
+        ('2023-02-27');
 
 -- Pickups
 INSERT INTO pickup_details (requesting_username, pickup_date, pickup_weight, num_of_bins, is_picked_up)
-VALUES ('bblanc', '2023-02-21', 120, 2, false),
-       ('mbron', '2023-02-21', 180, 3, false),
-       ('ltoussaint', '2023-02-21', 60, 1, false),
-       ('dcody', '2023-02-21', 180, 3, false),
-       ('awingfield', '2023-02-21', 120, 2, false),
-       ('jholden', '2023-02-21', 180, 3, false),
-       ('aburton', '2023-02-21', 60, 1, false),
-       ('nnagata', '2023-02-22', 120, 2, false),
-       ('cmao', '2023-02-22', 180, 3, false),
-       ('cdrummer', '2023-02-22', 60, 1, false),
-       ('fjohnson', '2023-02-22', 120, 2, false),
-       ('kashford', '2023-02-22', 180, 3, false),
-       ('adawes', '2023-02-22', 60, 1, false),
-       ('minaros', '2023-02-22', 120, 2, false);
-
--- Pickup History for mraymond
-INSERT INTO pickup_details (requesting_username, pickup_date, pickup_weight, num_of_bins, is_picked_up)
-VALUES ('mraymond', '2023-01-31', 180, 3, true),
-       ('mraymond', '2023-01-15', 60, 1, true),
-       ('mraymond', '2022-12-31', 60, 1, true),
-       ('mraymond', '2022-12-15', 120, 2, true),
-       ('mraymond', '2022-11-30', 60, 1, true);
+VALUES ('bblanc', '2023-02-25', 120, 2, false),
+       ('mbron', '2023-02-25', 180, 3, false),
+       ('ltoussaint', '2023-02-25', 60, 1, false),
+       ('dcody', '2023-02-25', 180, 3, false),
+       ('awingfield', '2023-02-25', 120, 2, false),
+       ('jholden', '2023-02-25', 180, 3, false),
+       ('aburton', '2023-02-26', 60, 1, false),
+       ('nnagata', '2023-02-26', 120, 2, false),
+       ('cmao', '2023-02-26', 180, 3, false),
+       ('cdrummer', '2023-02-26', 60, 1, false),
+       ('fjohnson', '2023-02-26', 120, 2, false),
+       ('kashford', '2023-02-26', 180, 3, false),
+       ('adawes', '2023-02-27', 60, 1, false),
+       ('minaros', '2023-02-27', 120, 2, false);
 
 -- Prizes
 INSERT INTO prize_details (prize_name, point_value)

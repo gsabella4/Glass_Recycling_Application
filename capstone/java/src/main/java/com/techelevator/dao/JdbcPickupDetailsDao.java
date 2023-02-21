@@ -53,10 +53,10 @@ public class JdbcPickupDetailsDao implements PickupDetailsDao {
         return myUnassignedPickups;
     }
 
-    //Get all outstanding pickups (pickups not picked up yet)
+    //Get all pending pickups (pickups not picked up yet)
     @Override
-    public List<PickupDetails> getAllOutstandingPickups() {
-        List<PickupDetails> outstandingPickups = new ArrayList<>();
+    public List<PickupDetails> getAllPendingPickups() {
+        List<PickupDetails> pendingPickups = new ArrayList<>();
         String sql = "SELECT pickup_id, route_id, requesting_username, pickup_date, pickup_weight, num_of_bins, is_picked_up, " +
                     "street_address || ', ' || city || ', ' || state_abbreviation || ' ' || zipcode AS full_address " +
                     "FROM pickup_details " +
@@ -64,9 +64,9 @@ public class JdbcPickupDetailsDao implements PickupDetailsDao {
                     "WHERE is_picked_up = false;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
-            outstandingPickups.add(mapRowToPickupDetails(results));
+            pendingPickups.add(mapRowToPickupDetails(results));
         }
-        return outstandingPickups;
+        return pendingPickups;
     }
 
     //Get outstanding pickups by username (Only 1 outstanding pickup per user)

@@ -199,7 +199,7 @@ export default {
 
   created() {
     //get all users unassigned pickup data here
-    PickupService.getPickups().then((response) => {
+    PickupService.getUnassignedPickups().then((response) => {
       this.users = response.data;
     });
   },
@@ -246,12 +246,13 @@ export default {
         this.selectedUserIDs[i].route_id = parseInt(this.newRouteId);
         PickupService.updatePickup(this.selectedUserIDs[i]).then((response) => {
           if (response.status === 200) {
-            alert("successful");
             response;
           }
         });
       }
       this.selectedUserIDs = [];
+      this.showForm = false;
+      alert("Success: Pickups have been assigned");
     },
 
     flipStatus(pickup_id) {

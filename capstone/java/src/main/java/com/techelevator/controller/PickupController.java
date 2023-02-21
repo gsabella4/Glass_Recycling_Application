@@ -93,9 +93,25 @@ public class PickupController {
         }
     }
 
+    //Returns all pending/active pickups from pickup_details - (pickups NOT picked up)
+    //Useful for admin dash, showing active pickup requests that need to be assigned to route/driver
+    //Admins only
+    @PreAuthorize("hasRole('ADMIN')")
+    @RequestMapping(path="/pending", method= RequestMethod.GET)
+    public List<PickupDetails> getPendingPickups() {
+        if (pickupDetailsDao.getAllPickupDetails() == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickups at this time");
+        } else if (pickupDetailsDao.getAllPendingPickups() == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "All pickups have been picked up! Great job");
+        } else {
+            return pickupDetailsDao.getAllPendingPickups();
+        }
+    }
+
+
     //Get all pickups from the pickup_details table
     //Admins only
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method= RequestMethod.GET)
     public List<PickupDetails> getAllPickups() {
         if (pickupDetailsDao.getAllPickupDetails() != null){
