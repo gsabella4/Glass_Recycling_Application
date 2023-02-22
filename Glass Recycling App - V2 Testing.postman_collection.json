@@ -1,0 +1,1606 @@
+{
+	"info": {
+		"_postman_id": "12b20107-1041-4cd2-8d72-ac4ba10ff07f",
+		"name": "Glass Recycling App - V2 Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24006330"
+	},
+	"item": [
+		{
+			"name": "User register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"greg\",\r\n    \"password\": \"password\",\r\n    \"confirmPassword\": \"password\",\r\n    \"role\": \"user\",\r\n    \"is_driver\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Driver register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1OTE1OTg4fQ.a3TVYYFpREwF4jsnAzb4r0xVlmwcen18LJ667BOiXKP28arNYgPSpPzB1v-f4gZGAZttc8RYq0hRbyYV98C0Qw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testDriver2\",\r\n    \"password\": \"password\",\r\n    \"confirmPassword\": \"password\",\r\n    \"role\": \"user\",\r\n    \"is_driver\": \"true\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/addDriver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"addDriver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mraymond\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "driver Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lglassmore\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user from users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Recyclers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/recyclers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"recyclers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Drivers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/drivers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my address",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0VXNlciIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDA1NTF9.Fbd-tQ51v6N3SU0-00fIhXFsP4jQEhNDo8DInIRsoCC0BssIwGLHwU6tTIKNYbKJx6baKvm5idrxRsRcB7CnOA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/myDetails/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"myDetails",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0VXNlciIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDA1NTF9.Fbd-tQ51v6N3SU0-00fIhXFsP4jQEhNDo8DInIRsoCC0BssIwGLHwU6tTIKNYbKJx6baKvm5idrxRsRcB7CnOA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/myDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"myDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my accountId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0VXNlciIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDA1NTF9.Fbd-tQ51v6N3SU0-00fIhXFsP4jQEhNDo8DInIRsoCC0BssIwGLHwU6tTIKNYbKJx6baKvm5idrxRsRcB7CnOA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/myDetails/accountId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"myDetails",
+						"accountId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post userDetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncmVnIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY3NTkxNTg4M30.nhl8vSfk1y3npNbRH4inN6SGozVN-hs4DCnXTTE9buVhLijZkBDZ9r3SEdbR_XkbFJecNwd2OSagfVG96eGmcA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"greg\",\r\n        \"full_name\": \"Greg Sabella\",\r\n        \"street_address\": \"1114 Westview Drive\",\r\n        \"city\": \"Lynchburg\",\r\n        \"state_abbreviation\": \"VA\",\r\n        \"zipcode\": \"24502\",\r\n        \"phone_number\": \"4125551212\",\r\n        \"email_address\": \"gsabella@gmail.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT edit user details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0VXNlciIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDA1NTF9.Fbd-tQ51v6N3SU0-00fIhXFsP4jQEhNDo8DInIRsoCC0BssIwGLHwU6tTIKNYbKJx6baKvm5idrxRsRcB7CnOA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account_id\": 1014,\r\n    \"username\": \"testUser\",\r\n    \"full_name\": \"Greg Sabella\",\r\n    \"street_address\": \"1400 Westview Dr\",\r\n    \"city\": \"Lynchburg\",\r\n    \"state_abbreviation\": \"VA\",\r\n    \"zipcode\": \"15211\",\r\n    \"phone_number\": \"4125551212\",\r\n    \"email_address\": \"gsabella@gmail.com\",\r\n    \"total_pounds_recycled\": 45,\r\n    \"credits_balance\": 0,\r\n    \"credits_redeemed\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/users/details/1014",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"1014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all user details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0VXNlciIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4ODE4Mjh9.xvzWeZpNGaB18Vi430GAXqT-vk7Y_7gnOMspLykdlince2P2Sv1FrDLt2VgpgWfU5wmL65igaxsZ5IjygPvy9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/users/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get address by account_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/users/details/1014/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"1014",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get total lbs recycled by account_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/users/details/1014/total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"1014",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user details",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/users/details/1013",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"1013"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all driver details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/driverDetails/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get driver_detail by driver_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/driverDetails/3001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails",
+						"3001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update driver_detail (office address)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"driver_id\": 3010,\r\n    \"username\": \"lglassmore\",\r\n    \"home_office_address\": \"1400 upstreet drive\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/driverDetails/3010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails",
+						"3010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update driver_detail (office address) Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/driverDetails/3001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails",
+						"3001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my pickups",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDQwNjl9.nuWh9aY_r88pUiKD2LWIuKEutH0BDV8D4tiasGkSmvHIXuwSSfLqrjk0GnNViqs4HPAYRwJvJ1PGTSUEIhmvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups/myPickups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"myPickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my Unassigned pickups",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDQwNjl9.nuWh9aY_r88pUiKD2LWIuKEutH0BDV8D4tiasGkSmvHIXuwSSfLqrjk0GnNViqs4HPAYRwJvJ1PGTSUEIhmvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups/myPickups/unassigned",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"myPickups",
+						"unassigned"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all unassigned pickups",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDQwNjl9.nuWh9aY_r88pUiKD2LWIuKEutH0BDV8D4tiasGkSmvHIXuwSSfLqrjk0GnNViqs4HPAYRwJvJ1PGTSUEIhmvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups/unassigned",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"unassigned"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all pickups",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDQwNjl9.nuWh9aY_r88pUiKD2LWIuKEutH0BDV8D4tiasGkSmvHIXuwSSfLqrjk0GnNViqs4HPAYRwJvJ1PGTSUEIhmvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pickup by pickup_id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1OTMwMjY1fQ.25tMQAZ8HpzeBKQi9umAZQ3FV6xAkhFUF0mgAXvwjdvz_rImjREhAKSnXwAIt945qbTzVYwvOpVb5lrc_l6qdw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a pickup by pickup_id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDQwNjl9.nuWh9aY_r88pUiKD2LWIuKEutH0BDV8D4tiasGkSmvHIXuwSSfLqrjk0GnNViqs4HPAYRwJvJ1PGTSUEIhmvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT edit a pickup detail - updating num of bins",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MDQwNjl9.nuWh9aY_r88pUiKD2LWIuKEutH0BDV8D4tiasGkSmvHIXuwSSfLqrjk0GnNViqs4HPAYRwJvJ1PGTSUEIhmvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_id\": 5,\r\n    \"route_id\": 1,\r\n    \"requesting_username\": \"dcody\",\r\n    \"pickup_date\": \"2023-02-11\",\r\n    \"pickup_weight\": 120,\r\n    \"num_of_bins\": 2,\r\n    \"is_picked_up\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all routes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all route by routeId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/routes/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Route",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"routeDate\": \"2023-02-12\",\r\n    \"driverId\": 3002\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all route by routeId Copy 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1ODExNTI4fQ.1S4InUwTBpTy0GwpZhaC3dC4vN1NbvW0ZndYBs5L5ZNap_MfhGiXQ9eW0fGgUVkXrQMuZkPG2_-e2ZF08-cPMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"routeId\": 2,\r\n    \"routeDate\": \"2023-02-12\",\r\n    \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/routes/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all unassigned pickups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MTMxOTl9.MIRNLLcN6is_gHIAdPtUiTwO0Bieqrppgrck1Hzcs76EVLb1A1TNwDfBAEG6oG_ZT2bUWE5F3IGD2TumrFIixA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my(user) unassigned pickups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MTMxOTl9.MIRNLLcN6is_gHIAdPtUiTwO0Bieqrppgrck1Hzcs76EVLb1A1TNwDfBAEG6oG_ZT2bUWE5F3IGD2TumrFIixA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/myPickups/unassigned",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"myPickups",
+						"unassigned"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my(user) all pickups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU4MTMxOTl9.MIRNLLcN6is_gHIAdPtUiTwO0Bieqrppgrck1Hzcs76EVLb1A1TNwDfBAEG6oG_ZT2bUWE5F3IGD2TumrFIixA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/myPickups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"myPickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pickups by driver_id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1ODExNTI4fQ.1S4InUwTBpTy0GwpZhaC3dC4vN1NbvW0ZndYBs5L5ZNap_MfhGiXQ9eW0fGgUVkXrQMuZkPG2_-e2ZF08-cPMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/drivers/3001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"drivers",
+						"3001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pickups by routeID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1ODExNTI4fQ.1S4InUwTBpTy0GwpZhaC3dC4vN1NbvW0ZndYBs5L5ZNap_MfhGiXQ9eW0fGgUVkXrQMuZkPG2_-e2ZF08-cPMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/routes/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"routes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get My(driver) pickups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZ2xhc3Ntb3JlIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY3NTgxMzA5NX0.LvE2fQzkHUfV4lebHB2JXHF5H80ggKtHJ5agmr2ctXGTWYnO6uxFV_B62z9AQ9kK0E7tj5Ip7EpSi-DHoP6BXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/drivers/myPickups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"drivers",
+						"myPickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dCody test - assign rt to driver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZ2xhc3Ntb3JlIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY3NTkzMDQ5OX0.-shjj68ZxluTC1F87-U9e28H_vJkBz9Nef-nnLyuKP5cbvUxkwrV2Zu8IVXTSY84wWRmCriF6piqtnIya_AFKA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"routeId\": 1,\r\n        \"routeDate\": \"2023-02-11\",\r\n        \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/routes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dCody test - get pickup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1OTMwMjY1fQ.25tMQAZ8HpzeBKQi9umAZQ3FV6xAkhFUF0mgAXvwjdvz_rImjREhAKSnXwAIt945qbTzVYwvOpVb5lrc_l6qdw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/pickups/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dCody test - assign pickup to route",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1OTMwMjY1fQ.25tMQAZ8HpzeBKQi9umAZQ3FV6xAkhFUF0mgAXvwjdvz_rImjREhAKSnXwAIt945qbTzVYwvOpVb5lrc_l6qdw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_id\": 5,\r\n    \"route_id\": 1,\r\n    \"requesting_username\": \"dcody\",\r\n    \"pickup_date\": \"2023-02-11\",\r\n    \"pickup_weight\": 180,\r\n    \"num_of_bins\": 3,\r\n    \"is_picked_up\": false,\r\n    \"full_address\": \"317 Semple St, Pittsburgh, PA 15213\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dCody test - mark picked up",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZ2xhc3Ntb3JlIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY3NTkzMDQ5OX0.-shjj68ZxluTC1F87-U9e28H_vJkBz9Nef-nnLyuKP5cbvUxkwrV2Zu8IVXTSY84wWRmCriF6piqtnIya_AFKA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_id\": 5,\r\n    \"route_id\": 1,\r\n    \"requesting_username\": \"dcody\",\r\n    \"pickup_date\": \"2023-02-11\",\r\n    \"pickup_weight\": 180,\r\n    \"num_of_bins\": 3,\r\n    \"is_picked_up\": true,\r\n    \"full_address\": \"317 Semple St, Pittsburgh, PA 15213\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Pounds of glass",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/stats/total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"stats",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all prizes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYXNoZm9yZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzYwNDQ2NDd9.ogjCuFTsDDdcppxHq7o4QVfBYYvG-1dgTagnrCWKn4C-gV8oAEGikFlP23wbmwurzDGoToGVykZbBBsYT3K3jQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"prize_name\": \"Rock Climbing Gears\",\r\n    \"point_value\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/prizes/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"prizes",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my prize history",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzYwNTY3MDB9.S-HKq3RmzWeXfy1mRL3Wgl9jDPS1hDpCrhrelcEH0uqR9mXb5LcCXhioIMQnryDsg-a7q4QLzBe8m5VT01WRBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"prize_name\": \"Rock Climbing Gears\",\r\n    \"point_value\": 500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/pickups/myPickups/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"myPickups",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

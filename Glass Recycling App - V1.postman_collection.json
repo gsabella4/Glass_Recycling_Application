@@ -1,0 +1,1230 @@
+{
+	"info": {
+		"_postman_id": "24cc8218-1272-4fd3-a88c-9e66034d0fc6",
+		"name": "Glass Recycling App - V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24006330"
+	},
+	"item": [
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"dcody\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "driver login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"driver1\",\r\n    \"password\": \"driverpass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register driver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1Njg0NDkwfQ.wcX1TppKMJiY6bhseM1XX8LR0Hs3ZxhlocG8N-iYHyibtRdq4qIzFBE-1OGcfmTWISaljO5UJtG2HJKZQDQ_ig",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"MrGlass\",\r\n    \"password\": \"driverPassword\",\r\n    \"confirmPassword\": \"driverPassword\",\r\n    \"role\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/addDriver",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"addDriver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete driver_detail",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/driverDetails/3004",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails",
+						"3004"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/20",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"password\",\r\n    \"confirmPassword\": \"password\",\r\n    \"role\": \"user\",\r\n    \"is_driver\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/register",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST User Details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET User_detail full address",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/904/address",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"904",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET my address - logged-in user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkY29keSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU3MzMxNzd9.y3CMNAXe7nmDVTYwOw-i7ZK5O2Cl4S24TmiHI7LHkDwbTPxTVyV1ofBf7vHzqqM3M49DYvzGiWwu-b4uwMH3nA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/myDetails/address",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"myDetails",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET User_detail total pounds recycled",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/915/total",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"915",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET User_detail credit balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/915/balance",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"915",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET User_detail credit redeemed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/913/redeemed",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"913",
+						"redeemed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET My User Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU1Mjc2ODd9.2-hcwB7UGOcf0CzarMOWKqLXCpratnf209gINDVkl9LnLZEi41TKWc2UJbnH8kNQPvLXMFkHKNu8Pq0lxUV6Pg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"routeDate\": \"2023-02-04\",\r\n    \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/myDetails",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"myDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user_detail",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/1016",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"1016"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user_detail Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/913",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"913"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all from User_details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user_detail by account id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"full_name\": \"John Daly\",\r\n    \"street_address\": \"123 Main St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"12345\",\r\n    \"phone_number\": \"7032974838\",\r\n    \"email_address\": \"johndaly@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/915",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"915"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT --- update user_detail",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"account_id\": 915,\r\n    \"username\": \"minaros\",\r\n    \"full_name\": \"Marco Inaros\",\r\n    \"street_address\": \"213 Gross St\",\r\n    \"city\": \"Pittsburgh\",\r\n    \"state_abbreviation\": \"PA\",\r\n    \"zipcode\": \"15224\",\r\n    \"phone_number\": \"4125551226\",\r\n    \"email_address\": \"minaros@gmail.com\",\r\n    \"total_pounds_recycled\": 540,\r\n    \"credits_balance\": 300,\r\n    \"credits_redeemed\": 240\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users/details/915",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users",
+						"details",
+						"915"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin2\",\r\n    \"password\": \"password\",\r\n    \"confirmPassword\": \"password\",\r\n    \"role\": \"admin\",\r\n    \"is_driver\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/register",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all users from users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all drivers from users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/drivers",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all recyclers from users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/recyclers",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"recyclers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all driver_details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/driverDetails",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET driver_detail by employee_id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/driverDetails/3001",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"driverDetails",
+						"3001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET pickup by pickup id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/7",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET pickup by route id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/routes/3",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"routes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET pickups by driver id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/drivers/3001",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"drivers",
+						"3001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all pickups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST pickup request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYXNoZm9yZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU5MzM3OTN9.0w2gP6H6ai1hi2wx5TyXR7HcVkv9GP6WjGuPDWDz-KD-IOcuJ9RZV7yHn1xFrRaM5BH-uOHTztnOC1J9DW4MrA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"requesting_username\": \"dcody\",\r\n        \"pickup_date\": \"2023-02-16\",\r\n        \"pickup_weight\": 0,\r\n        \"num_of_bins\": 3,\r\n        \"is_picked_up\": false\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT edit a pickup weight (WORKS) assign to route_id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_id\": 1,\r\n    \"route_id\": 1,\r\n    \"requesting_username\": \"mraymond\",\r\n    \"pickup_date\": \"2023-02-05\",\r\n    \"pickup_weight\": 60,\r\n    \"num_of_bins\": 2,\r\n    \"is_picked_up\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET my Pickups for logged in user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcmF5bW9uZCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU1Mjc2ODd9.2-hcwB7UGOcf0CzarMOWKqLXCpratnf209gINDVkl9LnLZEi41TKWc2UJbnH8kNQPvLXMFkHKNu8Pq0lxUV6Pg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/myPickups",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"myPickups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - assign pickup to route",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"pickup_id\": 7,\r\n        \"route_id\": 1,\r\n        \"requesting_username\": \"jholden\",\r\n        \"pickup_date\": \"2023-02-05\",\r\n        \"pickup_weight\": 180,\r\n        \"num_of_bins\": 3,\r\n        \"is_picked_up\": false\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/7",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - mark picked UP",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"pickup_id\": 7,\r\n        \"route_id\": 5,\r\n        \"requesting_username\": \"jholden\",\r\n        \"pickup_date\": \"2023-02-04\",\r\n        \"pickup_weight\": 180,\r\n        \"num_of_bins\": 3,\r\n        \"is_picked_up\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/pickups/7",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"pickups",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all routes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"routeDate\": \"2023-02-04\",\r\n    \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/routes",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all routes by route ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"routeDate\": \"2023-02-04\",\r\n    \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/routes/2",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all routes by driver Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"routeDate\": \"2023-02-04\",\r\n    \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/routes/drivers/3001",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes",
+						"drivers",
+						"3001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - assign a route to a driver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiZXhwIjoxNjc1OTMwMjY1fQ.25tMQAZ8HpzeBKQi9umAZQ3FV6xAkhFUF0mgAXvwjdvz_rImjREhAKSnXwAIt945qbTzVYwvOpVb5lrc_l6qdw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"routeId\": 1,\r\n        \"routeDate\": \"2023-02-11\",\r\n        \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/routes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - a route",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"routeDate\": \"2023-02-07\",\r\n        \"driverId\": 3001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/routes",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
