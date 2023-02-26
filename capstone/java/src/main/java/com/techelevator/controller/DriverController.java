@@ -32,13 +32,13 @@ public class DriverController {
 
 
     //Get all driver details objects from the driver_details table
-    @RequestMapping(path="", method= RequestMethod.GET)
+    @GetMapping("")
     public List<DriverDetails> getAllDrivers() {
         return driverDetailsDao.getAllDrivers();
     }
 
     //Get a driver detail object from the driver_details table, using driver_id
-    @RequestMapping(path="/{driver_id}", method= RequestMethod.GET)
+    @GetMapping("/{driver_id}")
     public DriverDetails getDriverByEmployeeId(@PathVariable int driver_id) {
         DriverDetails driver = null;
         driver = driverDetailsDao.getDriverByDriverId(driver_id);
@@ -54,7 +54,7 @@ public class DriverController {
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/{driver_id}", method= RequestMethod.DELETE)
+    @DeleteMapping("/{driver_id}")
     public void deleteDriverDetail(@PathVariable int driver_id) {
         if (driverDetailsDao.getDriverByDriverId(driver_id) != null) {
             driverDetailsDao.deleteDriver(driver_id);
@@ -66,9 +66,9 @@ public class DriverController {
 
     //Create a driver detail in the drivers_details table
     // Update 2/5 - Shouldn't need this handler method, /addDriver endpoint in Authentication Controller implements this already upon driver registration
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize(" hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(method= RequestMethod.POST)
+    @PostMapping("")
     public DriverDetails addDriverDetail(@RequestBody DriverDetails newDriver) {
         if (newDriver.getUsername() == null || newDriver.getHome_office_address() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not enough details provided in the request!");
@@ -82,7 +82,7 @@ public class DriverController {
     //Update a row in the driver_details table - returns the updated Driver Detail object
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(path="/{driver_id}", method= RequestMethod.PUT)
+    @PutMapping("/{driver_id}")
     public DriverDetails updateDriverDetail(@RequestBody DriverDetails driverToUpdate, @PathVariable int driver_id) {
         if (driverToUpdate.getDriver_id() != driver_id) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The Driver ID provided does not match the record you're attempting to update");

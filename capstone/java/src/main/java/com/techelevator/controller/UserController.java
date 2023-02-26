@@ -31,21 +31,21 @@ public class UserController {
 
 
     //get all users from users table (recyclers, admins, drivers)
-    @RequestMapping(path="/users", method= RequestMethod.GET)
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return userDao.findAllUsers();
     }
 
 
     //get all drivers from users table (ROLE == USER, is_driver == true)
-    @RequestMapping(path="/drivers", method= RequestMethod.GET)
+    @GetMapping("/drivers")
     public List<User> getAllDrivers() {
         return userDao.listAllDrivers();
     }
 
 
     //get all recyclers from the users table (ROLE == USER, is_driver == false)
-    @RequestMapping(path="/recyclers", method= RequestMethod.GET)
+    @GetMapping("/recyclers")
     public List<User> getAllRecyclers() {
         return userDao.listAllRecyclers();
     }
@@ -65,7 +65,7 @@ public class UserController {
     //delete a user from the users table, by user_id
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/users/{userId}", method= RequestMethod.DELETE)
+    @DeleteMapping("/users/{userId}")
     public void deleteUser(@PathVariable int userId) {
         if (userDao.getUserById(userId) != null) {
             userDao.deleteUser(userId);
@@ -81,25 +81,25 @@ public class UserController {
     //Get the total pounds of glass recycled across all users in the application
     // "How many pounds of glass has Vitrum kept out of landfills?"
     @PreAuthorize("permitAll")
-    @RequestMapping(path="/stats/total", method= RequestMethod.GET)
+    @GetMapping("/stats/total")
     public Long getTotalGlassRecycled() {
         return userDetailsDao.getTotalGlassRecycled();
     }
 
     //Get my Full Address - for logged-in user via Principal
-    @RequestMapping(path="/users/myDetails/address", method= RequestMethod.GET)
+    @GetMapping("/users/myDetails/address")
     public String getMyAddress(Principal principal) {
         return userDetailsDao.getFullAddressByUsername(principal.getName());
     }
 
     //Get my user details - for logged in user via Principal
-    @RequestMapping(path="/users/myDetails", method= RequestMethod.GET)
+    @GetMapping("/users/myDetails")
     public UserDetails getMyUserDetails(Principal principal) {
         return userDetailsDao.findUserDetailsByUsername(principal.getName());
     }
 
-    //Get my Account_id - for logged in user via Principal
-    @RequestMapping(path="/users/myDetails/accountId", method= RequestMethod.GET)
+    //Get my Account_id - for logged-in user via Principal
+    @GetMapping("/users/myDetails/accountId")
     public int getMyAccountId(Principal principal) {
         int accountId = userDetailsDao.getAccountIdByUsername(principal.getName());
         if (accountId != 0) {
@@ -110,13 +110,13 @@ public class UserController {
     }
 
     //Get all user details from user_details table
-    @RequestMapping(path="/users/details", method= RequestMethod.GET)
+    @GetMapping("/users/details")
     public List<UserDetails> getAllUserDetails() {
         return userDetailsDao.findAllUserDetails();
     }
 
     //Get user detail from user_details table, using account_id
-    @RequestMapping(path="/users/details/{accountId}", method= RequestMethod.GET)
+    @GetMapping("/users/details/{accountId}")
     public UserDetails getUserDetailByAccountId(@PathVariable int accountId) {
         UserDetails userDetail = userDetailsDao.findUserDetailsByAccountId(accountId);
 
@@ -129,7 +129,7 @@ public class UserController {
 
     //add new user detail to user_details table --- registering a user after they've completed information form
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path="/users/details", method= RequestMethod.POST)
+    @PostMapping("/users/details")
     public UserDetails addNewUserDetails(@Valid @RequestBody UserDetails newUserDetail) {
         if ((newUserDetail.getUsername()).equals(userDetailsDao.findUserDetailsByUsername(newUserDetail.getUsername()))){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "That user account already exists.");
@@ -139,7 +139,7 @@ public class UserController {
     }
 
     //update a user detail on the user_details table --- UserDetails object in Request body & account_id -- returns the updated UserDetails object
-    @RequestMapping(path="/users/details/{accountId}", method= RequestMethod.PUT)
+    @PutMapping("/users/details/{accountId}")
     public UserDetails updateUserDetails(@Valid @RequestBody UserDetails userDetails, @PathVariable int accountId) {
         if (userDetails.getAccount_id() != accountId) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The Account Id provided does not match the UserDetail you're trying to update");
@@ -154,7 +154,7 @@ public class UserController {
     //deleting a user detail from user_details table
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/users/details/{accountId}", method= RequestMethod.DELETE)
+    @DeleteMapping("/users/details/{accountId}")
     public void deleteUserDetails(@PathVariable int accountId) {
         if (userDetailsDao.findUserDetailsByAccountId(accountId) == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No such Account Id exists");
@@ -165,7 +165,7 @@ public class UserController {
 
     //Get full address in string format for Routes API, using account_id
     //example - '3001 Railroad St, Pittsburgh, PA 15201'
-    @RequestMapping(path="/users/details/{account_id}/address", method= RequestMethod.GET)
+    @GetMapping("/users/details/{account_id}/address")
     public String getFullAddressByAccountId(@PathVariable int account_id) {
         if (userDetailsDao.findUserDetailsByAccountId(account_id) == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No such username exists");
@@ -175,7 +175,7 @@ public class UserController {
     }
 
     //Get total amount of glass recycled for an account_id
-    @RequestMapping(path="/users/details/{account_id}/total", method= RequestMethod.GET)
+    @GetMapping("/users/details/{account_id}/total")
     public int getTotalGlassRecycledByAccountId(@PathVariable int account_id) {
         if (userDetailsDao.findUserDetailsByAccountId(account_id) == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No such username exists");
@@ -185,7 +185,7 @@ public class UserController {
     }
 
     //Get current credit/point balance for an account_id
-    @RequestMapping(path="/users/details/{account_id}/balance", method= RequestMethod.GET)
+    @GetMapping("/users/details/{account_id}/balance")
     public int getCreditBalanceByAccountId(@PathVariable int account_id) {
         if (userDetailsDao.findUserDetailsByAccountId(account_id) == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No such username exists");
@@ -195,7 +195,7 @@ public class UserController {
     }
 
     //Get the total amount of credits an account has redeemed towards prizes
-    @RequestMapping(path="/users/details/{account_id}/redeemed", method= RequestMethod.GET)
+    @GetMapping("/users/details/{account_id}/redeemed")
     public int getCreditRedeemedByAccountId(@PathVariable int account_id) {
         if (userDetailsDao.findUserDetailsByAccountId(account_id) == null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No such username exists");

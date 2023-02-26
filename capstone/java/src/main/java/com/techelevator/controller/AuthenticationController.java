@@ -38,7 +38,7 @@ public class AuthenticationController {
     }
 
     //Login for recyclers, drivers, admins
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto loginDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
@@ -57,7 +57,7 @@ public class AuthenticationController {
 
     //Register a recycler user account(ROLE_USER) or an Admin account(ROLE_ADMIN). (is_driver = false by default)
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public void registerUser(@Valid @RequestBody RegisterUserDto newUser) {
         try {
             User user = userDao.findUserByUsername(newUser.getUsername());
@@ -75,7 +75,7 @@ public class AuthenticationController {
     //Goal:  admin sets Username and is shown options to either set a password or have one random generated
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/addDriver", method = RequestMethod.POST)
+    @PostMapping("/addDriver")
     public void registerDriver(@Valid @RequestBody RegisterUserDto newDriver) {
         try {
             User user = userDao.findUserByUsername(newDriver.getUsername());

@@ -6,7 +6,7 @@
     </div>
 
     <div>
-      <driver-table class="driver-main">driver</driver-table>
+      <driver-table class="driver-main">Drivers</driver-table>
     </div>
 
     <div id="card-pickup">
@@ -119,7 +119,7 @@
 
         <!--one button for assigning route id  
         route_id is type of number-->
-        <button v-on:click="showForm = !showForm">Assign Route</button>
+        <button v-on:click="showForm = !showForm">Assign To Route</button>
         <form id="frmAddNewDriver" v-show="showForm">
           <div class="field">
             <label for="routeID">RouteId:</label>

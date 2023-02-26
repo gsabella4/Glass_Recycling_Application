@@ -34,7 +34,7 @@ public class PickupController {
 
 
     //Get my(user) pickups - Will return pickups requested by the logged-in Recycling user account
-    @RequestMapping(path="/myPickups", method= RequestMethod.GET)
+    @GetMapping("/myPickups")
     public List<PickupDetails> getMyPickups(Principal principal) {
         List<PickupDetails> myPickups = pickupDetailsDao.getPickupDetailsByRecyclerUsername(principal.getName());
         if (myPickups.size() != 0) {
@@ -45,7 +45,7 @@ public class PickupController {
     }
 
     //Get my(user) pickups history - Will return pickup history (completed pickups) by the logged-in Recycling user account
-    @RequestMapping(path="/myPickups/history", method= RequestMethod.GET)
+    @GetMapping("/myPickups/history")
     public List<PickupDetails> getMyPickupsHistory(Principal principal) {
         List<PickupDetails> myPickups = pickupDetailsDao.getCompletedPickupDetailsByRecyclerUsername(principal.getName());
         if (myPickups.size() != 0) {
@@ -56,7 +56,7 @@ public class PickupController {
     }
 
     //Get my unassigned pickups - Will return all pickups for current logged-in user, that are NOT yet assigned to route/driver
-    @RequestMapping(path="/myPickups/unassigned", method= RequestMethod.GET)
+    @GetMapping("/myPickups/unassigned")
     public List<PickupDetails> getMyUnassignedPickups(Principal principal) {
         List<PickupDetails> myUnassignedPickups = pickupDetailsDao.getUnassignedPickupsByUsername(principal.getName());
         if (myUnassignedPickups.size() != 0) {
@@ -68,7 +68,7 @@ public class PickupController {
 
     //Get my(driver) pickups - Will return pickups assigned to the logged-in Driver's account
     //--- filtering by Date, thinking this could be done w/ a filter function on the front end
-    @RequestMapping(path="/drivers/myPickups", method= RequestMethod.GET)
+    @GetMapping("/drivers/myPickups")
     public List<PickupDetails> getMyPickupsAsDriver(Principal principal) {
         List<PickupDetails> myDriverPickups = pickupDetailsDao.getPickupDetailsByDriverUsername(principal.getName());
         if (myDriverPickups.size() != 0) {
@@ -82,7 +82,7 @@ public class PickupController {
     //Useful for admin dash, showing active pickup requests that need to be assigned to route/driver
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(path="/unassigned", method= RequestMethod.GET)
+    @GetMapping("/unassigned")
     public List<PickupDetails> getUnassignedPickups() {
         if (pickupDetailsDao.getAllPickupDetails() == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickups at this time");
@@ -97,7 +97,7 @@ public class PickupController {
     //Useful for admin dash, showing active pickup requests that need to be assigned to route/driver
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(path="/pending", method= RequestMethod.GET)
+    @GetMapping("/pending")
     public List<PickupDetails> getPendingPickups() {
         if (pickupDetailsDao.getAllPickupDetails() == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no pickups at this time");
@@ -112,7 +112,7 @@ public class PickupController {
     //Get all pickups from the pickup_details table
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(method= RequestMethod.GET)
+    @GetMapping("")
     public List<PickupDetails> getAllPickups() {
         if (pickupDetailsDao.getAllPickupDetails() != null){
             return pickupDetailsDao.getAllPickupDetails();
@@ -122,7 +122,7 @@ public class PickupController {
     }
 
     //Get a PickupDetails object, by pickup_id
-    @RequestMapping(path="/{pickupId}", method= RequestMethod.GET)
+    @GetMapping("/{pickupId}")
     public PickupDetails getPickupByPickupId(@PathVariable int pickupId) {
         PickupDetails pickup = pickupDetailsDao.getPickupDetailsByPickupId(pickupId);
         if (pickup != null) {
@@ -133,7 +133,7 @@ public class PickupController {
     }
 
     //Get a list of PickupDetails associated with a driver ID
-    @RequestMapping(path="/drivers/{driverId}", method= RequestMethod.GET)
+    @GetMapping("/drivers/{driverId}")
     public List<PickupDetails> getPickupDetailsByDriverId(@PathVariable int driverId) {
 
         List<PickupDetails> results = null;
@@ -151,7 +151,7 @@ public class PickupController {
     }
 
     //Get a list of PickupDetails associated with a route ID
-    @RequestMapping(path="/routes/{routeId}", method= RequestMethod.GET)
+    @GetMapping("/routes/{routeId}")
     public List<PickupDetails> getPickupDetailsByRouteId(@PathVariable int routeId) {
         if (pickupDetailsDao.getPickupDetailsByRouteId(routeId) != null) {
             return pickupDetailsDao.getPickupDetailsByRouteId(routeId);
@@ -164,7 +164,7 @@ public class PickupController {
     //also checks for active outstanding requests for that user, can only have 1 active request per user
     //they must delete current request & add new. Or, edit current request.
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(method= RequestMethod.POST)
+    @PostMapping("")
     public PickupDetails addPickupDetails(@Valid @RequestBody PickupDetails newPickup) {
         if (pickupDetailsDao.getOutstandingPickupsByUsername(newPickup.getRequesting_username()).size() >= 1) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is already an active pickup request for this user. MAX 1 outstanding request per user");
@@ -177,7 +177,7 @@ public class PickupController {
     //Updates a row in the pickup_details table
     //would be a way to assign pickup to a driver/route && mark a pickup, pickedUp = true
     //IF assigning pickup to a route --- throws exception if PickupDate does not match the RouteDate
-    @RequestMapping(path="/{pickupId}", method= RequestMethod.PUT)
+    @PutMapping("/{pickupId}")
     public PickupDetails updatePickupDetails(@Valid @RequestBody PickupDetails updatedPickup, @PathVariable int pickupId) {
         System.out.println(updatedPickup.getPickup_id());
         if (pickupId != updatedPickup.getPickup_id()) {
@@ -196,7 +196,7 @@ public class PickupController {
     //Both users and admins are able to do this
     //example, I as a user want to delete my outstanding pickup request, then create a new
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path="/{pickupId}", method= RequestMethod.DELETE)
+    @DeleteMapping("/{pickupId}")
     public void deletePickupDetails(@PathVariable int pickupId) {
         if (pickupDetailsDao.getPickupDetailsByPickupId(pickupId) != null) {
             pickupDetailsDao.deletePickupDetails(pickupId);

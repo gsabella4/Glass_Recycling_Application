@@ -66,27 +66,27 @@ VALUES (1, 'mraymond', '2022-12-15', 120, 2, true),
 
 -- Routes
 INSERT INTO routes (route_date)
- VALUES ('2023-02-25'),
-        ('2023-02-25'),
+ VALUES ('2023-02-26'),
         ('2023-02-26'),
-        ('2023-02-27');
+        ('2023-02-28'),
+        ('2023-02-28');
 
 -- Pickups
 INSERT INTO pickup_details (requesting_username, pickup_date, pickup_weight, num_of_bins, is_picked_up)
-VALUES ('bblanc', '2023-02-25', 120, 2, false),
-       ('mbron', '2023-02-25', 180, 3, false),
-       ('ltoussaint', '2023-02-25', 60, 1, false),
-       ('dcody', '2023-02-25', 180, 3, false),
-       ('awingfield', '2023-02-25', 120, 2, false),
-       ('jholden', '2023-02-25', 180, 3, false),
+VALUES ('bblanc', '2023-02-26', 120, 2, false),
+       ('mbron', '2023-02-26', 180, 3, false),
+       ('ltoussaint', '2023-02-26', 60, 1, false),
+       ('dcody', '2023-02-26', 180, 3, false),
+       ('awingfield', '2023-02-26', 120, 2, false),
+       ('jholden', '2023-02-26', 180, 3, false),
        ('aburton', '2023-02-26', 60, 1, false),
        ('nnagata', '2023-02-26', 120, 2, false),
-       ('cmao', '2023-02-26', 180, 3, false),
-       ('cdrummer', '2023-02-26', 60, 1, false),
-       ('fjohnson', '2023-02-26', 120, 2, false),
-       ('kashford', '2023-02-26', 180, 3, false),
-       ('adawes', '2023-02-27', 60, 1, false),
-       ('minaros', '2023-02-27', 120, 2, false);
+       ('cmao', '2023-02-28', 180, 3, false),
+       ('cdrummer', '2023-02-28', 60, 1, false),
+       ('fjohnson', '2023-02-28', 120, 2, false),
+       ('kashford', '2023-02-28', 180, 3, false),
+       ('adawes', '2023-02-28', 60, 1, false),
+       ('minaros', '2023-02-28', 120, 2, false);
 
 -- Prizes
 INSERT INTO prize_details (prize_name, point_value)

@@ -30,13 +30,13 @@ public class PrizeController {
 
 
     //Get all prizes
-    @RequestMapping(method= RequestMethod.GET)
+    @GetMapping("")
     public List<PrizeDetails> getAllPrizes() {
         return prizeDetailsDao.getPrizeList();
     }
 
     //Get prize by prize_id
-    @RequestMapping(path="/{prizeId}", method= RequestMethod.GET)
+    @GetMapping("/{prizeId}")
     public PrizeDetails getPrizeByPrizeId(@PathVariable int prizeId) {
         PrizeDetails prize = prizeDetailsDao.getPrizeByPrizeId(prizeId);
         if (prize != null) {
@@ -47,13 +47,13 @@ public class PrizeController {
     }
 
     //Add new prize
-    @RequestMapping(method= RequestMethod.POST)
+    @PostMapping("")
     public PrizeDetails addPrize(@Valid @RequestBody PrizeDetails newPrize) {
             return prizeDetailsDao.addPrize(newPrize);
     }
 
     //Edit a prize
-    @RequestMapping(path="/{prizeId}", method= RequestMethod.PUT)
+    @PutMapping("/{prizeId}")
     public PrizeDetails updatePrize(@Valid @RequestBody PrizeDetails updatedPrize, @PathVariable int prizeId) {
         if (updatedPrize.getPrize_id() != prizeId) {
             prizeDetailsDao.updatePrize(updatedPrize);
@@ -64,7 +64,7 @@ public class PrizeController {
     }
 
     //Delete a prize
-    @RequestMapping(path="/{prizeId}", method= RequestMethod.DELETE)
+    @DeleteMapping("/{prizeId}")
     public void deletePrize(@PathVariable int prizeId) {
         prizeDetailsDao.deletePrize(prizeId);
     }
