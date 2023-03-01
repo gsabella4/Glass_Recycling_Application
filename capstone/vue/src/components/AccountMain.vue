@@ -25,7 +25,6 @@ Three columns( history, calendar, account)
       <h2>My Recycling History</h2>
       <history></history>
     </div>
-
     <div>
       <h2>Available Prizes</h2>
       <prize-cards></prize-cards>
@@ -38,14 +37,14 @@ import AccountService from "../services/AccountService.js";
 import PickUp from "../components/PickUp.vue";
 import History from "../components/History.vue";
 import PickupService from "../services/PickupService";
-import PrizeCards from "../components/PrizeCards.vue";
+import PrizeCards from './PrizeCards.vue';
 
 export default {
   name: "account-main",
   components: {
     PickUp,
     History,
-    PrizeCards,
+    PrizeCards
   },
   data() {
     return {
