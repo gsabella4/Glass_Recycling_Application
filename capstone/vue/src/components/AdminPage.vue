@@ -140,7 +140,7 @@
       <set-route></set-route>
     </div>
     <div>
-      <prize-details>prizes</prize-details>
+      <prize-details>Prizes</prize-details>
     </div>
   </div>
 </template>

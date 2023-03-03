@@ -103,7 +103,7 @@
           <div class="flippy-back">
             <h3>600 Points</h3>
             <p>
-              Go buy some hiking gear and a reusable waterbottle to prepare for
+              Go buy some hiking gear and a reusable water bottle to prepare for
               your weekend getaway to 7 Springs Resort!
             </p>
           </div>
@@ -122,7 +122,7 @@
             <h3>1500 Points</h3>
             <p>
               With this espresso machine, you are no longer beholden to the $6
-              coffees at your local shop. Buy some beans and get caffinated!
+              coffees at your local shop. Buy some beans and get caffeinated!
             </p>
           </div>
         </div>
