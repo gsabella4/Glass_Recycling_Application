@@ -110,4 +110,10 @@ public class JdbcUserDaoTests extends BaseDaoTests {
         actualUser.setPassword(newUser.getPassword()); // reset password back to unhashed password for testing
         Assert.assertEquals(newUser, actualUser);
     }
+
+    @Test
+    public void delete_user_then_returns_null_when_retrieved() {
+        sut.deleteUser(1);
+        Assert.assertNull(sut.getUserById(1));
+    }
 }
