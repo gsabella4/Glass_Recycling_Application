@@ -16,10 +16,8 @@ export default {
 
     // //add new user detail.
     addUserDetails(userDetail) {
-
         return axios.post('/users/details', userDetail)
     },
-
 
     //get userdetail by username
     getUserDetails(){
