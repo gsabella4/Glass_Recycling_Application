@@ -108,7 +108,6 @@ public class PickupController {
         }
     }
 
-
     //Get all pickups from the pickup_details table
     //Admins only
     @PreAuthorize("hasRole('ADMIN')")

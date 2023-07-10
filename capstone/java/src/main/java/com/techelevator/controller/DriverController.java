@@ -63,7 +63,6 @@ public class DriverController {
         }
     }
 
-
     //Create a driver detail in the drivers_details table
     // Update 2/5 - Shouldn't need this handler method, /addDriver endpoint in Authentication Controller implements this already upon driver registration
     @PreAuthorize(" hasRole('ADMIN')")

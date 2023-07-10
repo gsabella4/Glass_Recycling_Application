@@ -116,7 +116,6 @@ public class RoutesController {
             routesDao.updateRoute(routeToUpdate);
             updatedRoute = routesDao.getRoutesByRouteId(routeId);
             return updatedRoute;
-
         }
     }
 
