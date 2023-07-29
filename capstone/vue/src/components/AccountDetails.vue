@@ -79,9 +79,9 @@ export default {
         zipcode: "",
         phone_number: "",
         email_address: "",
-        // total_pounds_recycled:0,
-        // credits_balance:0,
-        // credits_redeemed:0,
+        total_pounds_recycled: "",
+        credits_balance: "",
+        credits_redeemed: ""
       },
     };
   },
