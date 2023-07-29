@@ -55,7 +55,7 @@ public class JdbcDriverDetailsDao implements DriverDetailsDao {
     public DriverDetails getDriverByUsername(String username) {
         DriverDetails driver = null;
         String sql = "SELECT driver_id, username, home_office_address FROM driver_details " +
-                    "WHERE username = ?;";
+                     "WHERE username = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
         if (result.next()){
             driver = mapRowToDriverDetails(result);
@@ -67,7 +67,7 @@ public class JdbcDriverDetailsDao implements DriverDetailsDao {
     @Override
     public DriverDetails createDriver(DriverDetails driverDetails) {
         String sql = "INSERT INTO driver_details (username, home_office_address) " +
-                    "VALUES (?, ?) RETURNING driver_id;";
+                     "VALUES (?, ?) RETURNING driver_id;";
         Integer driverId = jdbcTemplate.queryForObject(sql, Integer.class, driverDetails.getUsername(), HOME_OFFICE_ADDRESS);
         return getDriverByDriverId(driverId);
     }
@@ -76,8 +76,8 @@ public class JdbcDriverDetailsDao implements DriverDetailsDao {
     @Override
     public void updateDriver(DriverDetails driverDetails) {
         String sql = "UPDATE driver_details " +
-                    "SET driver_id = ?, username = ?, home_office_address = ? " +
-                    "WHERE driver_id = ?;";
+                     "SET driver_id = ?, username = ?, home_office_address = ? " +
+                     "WHERE driver_id = ?;";
         jdbcTemplate.update(sql, driverDetails.getDriver_id(), driverDetails.getUsername(), driverDetails.getHome_office_address(), driverDetails.getDriver_id());
     }
 
@@ -92,7 +92,6 @@ public class JdbcDriverDetailsDao implements DriverDetailsDao {
     private DriverDetails mapRowToDriverDetails(SqlRowSet rs) {
 
         DriverDetails driverDetails = new DriverDetails();
-
         driverDetails.setDriver_id(rs.getInt("driver_id"));
         driverDetails.setUsername(rs.getString("username"));
         driverDetails.setHome_office_address(rs.getString("home_office_address"));

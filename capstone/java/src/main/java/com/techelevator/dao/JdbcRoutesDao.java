@@ -26,7 +26,7 @@ public class JdbcRoutesDao implements RoutesDao {
     public List<Routes> getAllRoutes() {
         List<Routes> allRoutes = new ArrayList<>();
         String sql = "SELECT route_id, route_date, driver_id " +
-                    "FROM routes;";
+                     "FROM routes;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
             Routes route = mapRowToRoutes(results);
@@ -41,8 +41,8 @@ public class JdbcRoutesDao implements RoutesDao {
 
         Routes routes = null;
         String sql = "SELECT route_id, route_date, driver_id " +
-                "FROM routes " +
-                "WHERE route_id = ?;";
+                     "FROM routes " +
+                     "WHERE route_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, routeId);
         if (results.next()) {
@@ -57,8 +57,8 @@ public class JdbcRoutesDao implements RoutesDao {
     public List<Routes> getRoutesByDriverId(int driverId) {
         List<Routes> routesByDriverId = new ArrayList<>();
         String sql = "SELECT route_id, route_date, driver_id " +
-                    "FROM routes " +
-                    "WHERE driver_id = ?;";
+                     "FROM routes " +
+                     "WHERE driver_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, driverId);
         while(results.next()) {
             Routes route = mapRowToRoutes(results);
@@ -72,8 +72,8 @@ public class JdbcRoutesDao implements RoutesDao {
     public LocalDate getRouteDateByRouteId(int routeId) {
         LocalDate routeDate = null;
         String sql = "SELECT route_date " +
-                    "FROM routes " +
-                    "WHERE route_id = ?;";
+                     "FROM routes " +
+                     "WHERE route_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, routeId);
         if(result.next()) {
             routeDate = result.getDate("route_date").toLocalDate();
@@ -86,8 +86,8 @@ public class JdbcRoutesDao implements RoutesDao {
     public List<Routes> getRoutesByDate(Date routeDate) {
         List<Routes> routesList = new ArrayList<>();
         String sql = "SELECT route_id, route_date, driver_id " +
-                "FROM routes " +
-                "WHERE route_date = ?;";
+                     "FROM routes " +
+                     "WHERE route_date = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, routeDate);
         while (results.next()) {
@@ -102,7 +102,7 @@ public class JdbcRoutesDao implements RoutesDao {
     @Override
     public Routes createRoute(Routes routes) {
         String sql = "INSERT INTO routes (route_date) " +
-                "VALUES (?) RETURNING route_id;";
+                     "VALUES (?) RETURNING route_id;";
         Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
         routes.getRouteDate());
 
@@ -114,13 +114,13 @@ public class JdbcRoutesDao implements RoutesDao {
     public void updateRoute(Routes routes) {
         if (routes.getDriverId() == 0) {
             String sql = "UPDATE routes " +
-                    "SET route_id = ?, route_date = ? " +
-                    "WHERE route_id = ?;";
+                         "SET route_id = ?, route_date = ? " +
+                         "WHERE route_id = ?;";
             jdbcTemplate.update(sql, routes.getRouteId(), routes.getRouteDate(), routes.getRouteId());
         } else {
             String sql = "UPDATE routes " +
-                    "SET route_id = ?, route_date = ?, driver_id = ? " +
-                    "WHERE route_id = ?;";
+                         "SET route_id = ?, route_date = ?, driver_id = ? " +
+                         "WHERE route_id = ?;";
             jdbcTemplate.update(sql, routes.getRouteId(), routes.getRouteDate(), routes.getDriverId(), routes.getRouteId());
         }
     }
@@ -136,7 +136,6 @@ public class JdbcRoutesDao implements RoutesDao {
     private Routes mapRowToRoutes(SqlRowSet rowSet) {
 
         Routes routes = new Routes();
-
         routes.setRouteId(rowSet.getInt("route_id"));
         routes.setRouteDate(rowSet.getDate("route_date").toLocalDate());
         routes.setDriverId(rowSet.getInt("driver_id"));

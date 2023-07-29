@@ -30,7 +30,7 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public long getTotalGlassRecycled() {
         long totalGlassRecycled = 0;
         String sql = "SELECT SUM(total_pounds_recycled) AS total_glass_recycled " +
-                    "FROM user_details;";
+                     "FROM user_details;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 
         if (result.next()) {
@@ -44,8 +44,8 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public List<UserDetails> findAllUserDetails() {
         List<UserDetails> allUsers = new ArrayList<>();
         String sql = "SELECT account_id, username, full_name, street_address, city, state_abbreviation, " +
-                "zipcode, phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed " +
-                "FROM user_details;";
+                        "zipcode, phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed " +
+                     "FROM user_details;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
@@ -60,9 +60,9 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public UserDetails findUserDetailsByAccountId(int account_id) {
         UserDetails userDetails = null;
         String sql = "SELECT account_id, username, full_name, street_address, city, state_abbreviation, " +
-                "zipcode, phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed " +
-                "FROM user_details " +
-                "WHERE account_id = ?;";
+                        "zipcode, phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed " +
+                     "FROM user_details " +
+                     "WHERE account_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, account_id);
         if (result.next()){
             userDetails = mapRowToUserDetail(result);
@@ -73,8 +73,8 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     //Get account_id from user_details table, by username
     public int getAccountIdByUsername(String username) {
         String sql = "SELECT account_id " +
-                    "FROM user_details " +
-                    "WHERE username = ?;";
+                     "FROM user_details " +
+                     "WHERE username = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
         if (result.next()) {
             int accountId = result.getInt("account_id");
@@ -88,9 +88,9 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public UserDetails findUserDetailsByUsername(String username) {
         UserDetails userDetails = null;
         String sql = "SELECT account_id, username, full_name, street_address, city, state_abbreviation, " +
-                "zipcode, phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed " +
-                "FROM user_details " +
-                "WHERE username = ?;";
+                        "zipcode, phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed " +
+                     "FROM user_details " +
+                     "WHERE username = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
         if (result.next()){
             userDetails = mapRowToUserDetail(result);
@@ -102,8 +102,8 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     @Override
     public UserDetails createUserDetails(UserDetails userDetails) {
         String sql = "INSERT INTO user_details (username, full_name, street_address, city, state_abbreviation, zipcode, " +
-                                                "phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed) " +
-                                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING account_id;";
+                        "phone_number, email_address, total_pounds_recycled, credits_balance, credits_redeemed) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING account_id;";
         Integer account_id = jdbcTemplate.queryForObject(sql, Integer.class, userDetails.getUsername(), userDetails.getFull_name(), userDetails.getStreet_address(),
                              userDetails.getCity(), userDetails.getState_abbreviation(), userDetails.getZipcode(), userDetails.getPhone_number(),
                              userDetails.getEmail_address(), STARTING_TOTAL_POUNDS, STARTING_CREDITS, STARTING_CREDITS_REDEEMED);
@@ -115,9 +115,9 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     @Override
     public void updateUserDetails(UserDetails userDetails) {
         String sql = "UPDATE user_details " +
-                    "SET username = ?, full_name = ?, street_address = ?, city = ?, state_abbreviation = ?, zipcode = ?, " +
-                    "phone_number = ?, email_address = ?, total_pounds_recycled = ?, credits_balance = ?, credits_redeemed = ? " +
-                    "WHERE account_id = ?;";
+                     "SET username = ?, full_name = ?, street_address = ?, city = ?, state_abbreviation = ?, zipcode = ?, " +
+                        "phone_number = ?, email_address = ?, total_pounds_recycled = ?, credits_balance = ?, credits_redeemed = ? " +
+                     "WHERE account_id = ?;";
         jdbcTemplate.update(sql, userDetails.getUsername(), userDetails.getFull_name(), userDetails.getStreet_address(),
                 userDetails.getCity(), userDetails.getState_abbreviation(), userDetails.getZipcode(), userDetails.getPhone_number(),
                 userDetails.getEmail_address(), userDetails.getTotal_pounds_recycled(), userDetails.getCredits_balance(), userDetails.getCredits_redeemed(),
@@ -137,7 +137,7 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public String getFullAddressByAccountId(int account_id) {
         String address = null;
         String sql = "SELECT street_address, city, state_abbreviation, zipcode " +
-                    "FROM user_details WHERE account_id = ?;";
+                     "FROM user_details WHERE account_id = ?;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, account_id);
         if (result.next()){
@@ -154,7 +154,7 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public String getFullAddressByUsername(String username) {
         String address = null;
         String sql = "SELECT street_address, city, state_abbreviation, zipcode " +
-                "FROM user_details WHERE username = ?;";
+                     "FROM user_details WHERE username = ?;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
         if (result.next()){
@@ -169,7 +169,7 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public int getTotalGlassRecycledByAccountId(int account_id) {
         int totalGlassRecycled = 0;
         String sql = "SELECT total_pounds_recycled " +
-                "FROM user_details WHERE account_id = ?;";
+                     "FROM user_details WHERE account_id = ?;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, account_id);
         if (result.next()){
@@ -183,7 +183,7 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public int getCreditBalanceByAccountId(int account_id) {
         int currentBalance = 0;
         String sql = "SELECT credits_balance " +
-                    "FROM user_details WHERE account_id = ?;";
+                     "FROM user_details WHERE account_id = ?;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, account_id);
         if (result.next()){
@@ -197,7 +197,7 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
     public int getCreditRedeemedByAccountId(int account_id) {
         int creditsRedeemed = 0;
         String sql = "SELECT credits_redeemed " +
-                "FROM user_details WHERE account_id = ?;";
+                     "FROM user_details WHERE account_id = ?;";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, account_id);
         if (result.next()){
@@ -206,11 +206,9 @@ public class JdbcUserDetailsDao implements UserDetailsDao {
         return creditsRedeemed;
     }
 
-
-
     private UserDetails mapRowToUserDetail(SqlRowSet rs) {
-        UserDetails userDetail = new UserDetails();
 
+        UserDetails userDetail = new UserDetails();
         userDetail.setAccount_id(rs.getInt("account_id"));
         userDetail.setUsername(rs.getString("username"));
         userDetail.setFull_name(rs.getString("full_name"));
